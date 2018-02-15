@@ -1,2 +1,0 @@
-# hazzus.github.io
-Portfolio
