@@ -23,6 +23,10 @@ img.me {
 	margin-left: 22%;
 }
 
+img.pic {
+	height: 40px;
+	padding: 10px;
+}
 
 .main {
 	width: 100%;
@@ -54,7 +58,14 @@ img.me {
 	padding-left: 21%;
 }
 
-img.pic {
-	height: 40px;
-	padding: 10px;
+.project {
+	width : 200px;
+	height: 200px;
+	margin: 2%;
+	margin-left : 4%;
+}
+
+.projects {
+	margin-left: 20%;
+	display: flex;
 }
