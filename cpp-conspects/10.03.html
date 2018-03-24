@@ -4,12 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>С++ 10 march</title>
+  <title>C++ 10 march</title>
   <link rel="stylesheet" href="https://stackedit.io/style.css" />
 </head>
 
 <body class="stackedit">
-  <div class="stackedit__html"><p><h1> С++.</h1><br>
+  <div class="stackedit__html"><p># С++.<br>
 С - плохо читаемый язык, и больше программы на нем было очень сложно разобрать. Но он был очень быстрым и это послужило началом разработки языка С++.</p>
 <h2 id="инкапсуляция">Инкапсуляция</h2>
 <p>Для поддержки процесса данных в плюсах есть 2 механизма:<br>
@@ -45,7 +45,7 @@ private<span class="token punctuation">:</span>
 <h2 id="ключевые-слова-class-и-struct">Ключевые слова class и struct</h2>
 <p>Они отличаются только тем, что в <code>struct</code> все по умолчанию <code>public</code>, а в <code>class</code> - <code>private</code></p>
 <h2 id="конструкторы-и-деструкторы">Конструкторы и деструкторы</h2>
-<p>Нам важно что при создании класса его инфариант мог бы быть выполненным. Для этого нужны конструкторы:</p>
+<p>Нам важно, чтобы при создании класса его инвариант был выполнен. Для этого нужны конструкторы:</p>
 <pre class=" language-c"><code class="prism ++ language-c">	<span class="token function">string</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 	<span class="token punctuation">{</span>
 		data <span class="token operator">=</span> nullptr<span class="token punctuation">;</span>
@@ -121,7 +121,7 @@ private<span class="token punctuation">:</span>
 	<span class="token operator">*</span>q <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
 	
 	<span class="token keyword">int</span>		 <span class="token operator">*</span>		 a<span class="token punctuation">;</span> <span class="token operator">-</span> изм указатель на изм
-	<span class="token keyword">int</span>	<span class="token keyword">const</span><span class="token operator">*</span>		 b<span class="token punctuation">;</span> <span class="token operator">-</span> изм ууказатель на неизм
+	<span class="token keyword">int</span>	<span class="token keyword">const</span><span class="token operator">*</span>		 b<span class="token punctuation">;</span> <span class="token operator">-</span> изм указатель на неизм
 	<span class="token keyword">int</span>		 <span class="token operator">*</span> <span class="token keyword">const</span> b<span class="token punctuation">;</span> <span class="token operator">-</span> неизм указатель на изм
 	<span class="token keyword">int</span> <span class="token keyword">const</span><span class="token operator">*</span> <span class="token keyword">const</span> c<span class="token punctuation">;</span> <span class="token operator">-</span> неизм указатель на неизм
 

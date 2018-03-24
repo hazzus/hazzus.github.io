@@ -9,7 +9,7 @@
 </head>
 
 <body class="stackedit">
-  <div class="stackedit__html"><p><h1> Наследование и виртуальные функции</h1></p>
+  <div class="stackedit__html"><p># Наследование и виртуальные функции</p>
 <pre class=" language-c"><code class="prism ++ language-c"><span class="token keyword">struct</span> base <span class="token punctuation">{</span>
 	<span class="token keyword">int</span> a<span class="token punctuation">,</span> b<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
@@ -92,7 +92,7 @@
 	<span class="token function">play</span><span class="token punctuation">(</span>hc<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>Эта конструкция называется (не понял)<br>
+<p>Этот механизм называется полиморфизмом.<br>
 Теперь улучшим наш пример:</p>
 <pre class=" language-c"><code class="prism ++ language-c"><span class="token keyword">struct</span> data_source <span class="token punctuation">{</span>
 	virtual <span class="token keyword">void</span> <span class="token function">read</span><span class="token punctuation">(</span>buffer<span class="token operator">&amp;</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">//не имеет тела</span>
@@ -123,7 +123,7 @@
 </code></pre>
 <p>Если нет разумной реализации по умолчанию, то ее помечают как нереализованную(абстрактную) с помощью = 0.<br>
 Так же существует еще один модификатор доступа <code>protected</code> - к этим методам и полям могут обращаться только производные класса.<br>
-Сначала <code>potected</code> казался целесообразным. Но потом оказалось что ничего хорошего это не приносит.<br>
+Сначала <code>protected</code> казался целесообразным. Но потом оказалось что ничего хорошего это не приносит.<br>
 Внутри своего класса мы не ломаем инвариант. То что может сломать - делаем <code>private</code>.  С <code>protected</code> возникает некоторая дилемма насчет инварианта.</p>
 <h2 id="множественное-наследование">Множественное наследование</h2>
 <p>Да, в крестах оно есть.</p>
