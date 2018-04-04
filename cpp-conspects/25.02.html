@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C++ 25 february</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="c--c">C / C++</h1>
+<p>Это разные языки программирования.</p>
+
+<table>
+<thead>
+<tr>
+<th>C++ c 1980г (C with Classes)</th>
+<th>C с 1972 (traditional C)</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table><p>С++ до 98 очень отличается от раннего С++, каждый новый стандарт привносит свои изменения в язык C++</p>
+<h2 id="синтаксическое-пересечение-c-и-c">Синтаксическое пересечение C и C++</h2>
+<pre class=" language-c"><code class="prism  language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;cstdio&gt;</span> </span><span class="token comment">// - лежит printf</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Hello world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// можно не писать return 0;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="типы-данных">Типы данных</h3>
+<h4 id="целочисленные">Целочисленные:</h4>
+<pre class=" language-c"><code class="prism ++ language-c">	<span class="token keyword">int</span> 	<span class="token keyword">signed</span> <span class="token operator">*</span> <span class="token operator">-</span> по умолчанию <span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>
+			<span class="token keyword">unsigned</span>
+			<span class="token keyword">short</span>
+			<span class="token keyword">long</span> 
+			<span class="token keyword">long</span> <span class="token keyword">long</span>
+</code></pre>
+<p>Стандарт не приписывает конкретных размеров типа, говорит только что меньше или равно.</p>
+
+<table>
+<thead>
+<tr>
+<th>типы</th>
+<th>32 bit</th>
+<th>win64</th>
+<th>linux64</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>short</td>
+<td>16</td>
+<td>16</td>
+<td>16</td>
+</tr>
+<tr>
+<td>int</td>
+<td>32</td>
+<td>32</td>
+<td>32</td>
+</tr>
+<tr>
+<td>long</td>
+<td>32</td>
+<td>32</td>
+<td>64</td>
+</tr>
+<tr>
+<td>long long</td>
+<td>64</td>
+<td>64</td>
+<td>64</td>
+</tr>
+</tbody>
+</table><p><strong>8 битные типы</strong></p>
+<pre class=" language-c"><code class="prism ++ language-c"><span class="token keyword">char</span>
+<span class="token keyword">signed</span> <span class="token keyword">char</span>			<span class="token comment">// 3 разных типа</span>
+<span class="token keyword">unsigned</span> <span class="token keyword">char</span>
+</code></pre>
+<p><strong><code>size_t</code></strong> - тип, размера которого хватит, чтобы хранить максимальный размер; он <code>unsigned</code> (размер на 32bit - 32, на 64bit - 64)<br>
+<strong><code>ptrdiff_t</code></strong> - достаточно для разности 2 указателей (signed)<br>
+<strong>Существуют типы с фиксированным размером:</strong></p>
+<pre class=" language-c"><code class="prism ++ language-c">int8_t			uint8_t
+int16_t			uint16_t
+int32_t			uint32_t
+int64_t			uint64_t
+</code></pre>
+<p><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">NB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height: 0.68333em;"></span><span class="strut bottom" style="height: 0.68333em; vertical-align: 0em;"></span><span class="base"><span class="mord mathit" style="margin-right: 0.10903em;">N</span><span class="mord mathit" style="margin-right: 0.05017em;">B</span></span></span></span></span></p>
+<ol>
+<li>Чем меньше мы приводим один тип к другому, тем лучше</li>
+<li>Как выбирать целочисленный тип:
+<ul>
+<li>если тип из библиотеки или уходит в нее, то используем тот же тип, что был там.</li>
+<li>если только внутри - <code>size_t</code> и <code>ptrdiff_t</code></li>
+<li>если знаем, оцениваем</li>
+</ul>
+</li>
+</ol>
+<h4 id="дробные">Дробные:</h4>
+
+<table>
+<thead>
+<tr>
+<th>тип</th>
+<th>обычно</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>float</td>
+<td>32</td>
+</tr>
+<tr>
+<td>double</td>
+<td>64</td>
+</tr>
+<tr>
+<td>long double</td>
+<td>64/80</td>
+</tr>
+</tbody>
+</table><p>Разделение на мантиссу и экспоненту фиксировано в <em>стандарте</em><br>
+-&gt;<a href="https://neerc.ifmo.ru/wiki/index.php?title=%D0%9F%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B2%D0%B5%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D1%85_%D1%87%D0%B8%D1%81%D0%B5%D0%BB">викиконспекты</a></p>
+<h4 id="составные-типы">Составные типы:</h4>
+<ol>
+<li><em>Структура</em></li>
+</ol>
+<pre class=" language-c"><code class="prism ++ language-c"><span class="token keyword">struct</span> point <span class="token punctuation">{</span>
+	<span class="token keyword">float</span> x<span class="token punctuation">;</span>
+	<span class="token keyword">float</span> y<span class="token punctuation">;</span>
+	<span class="token keyword">float</span> z<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>данные структуры хранятся подряд</p>
+<ol start="2">
+<li><em>Указатель</em> - номер в ячейке памяти(важно указывать какой тип)</li>
+</ol>
+<pre class=" language-c"><code class="prism ++ language-c"><span class="token keyword">int</span> a<span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>a<span class="token punctuation">;</span>			<span class="token comment">// размер указателя - битность системы</span>
+<span class="token keyword">long</span> <span class="token operator">*</span>a<span class="token punctuation">;</span>
+</code></pre>
+<p>Операции для работы с указателями:<br>
+* взятие адреса	<code>&amp;: T -&gt; *T</code><br>
+* размывание <code>* : T* -&gt; T</code></p>
+<ol start="3">
+<li><em>Массивы</em></li>
+</ol>
+<h3 id="операции">Операции</h3>
+<h4 id="с-целочисленными-типами">С целочисленными типами:</h4>
+<p><code>++a</code> - увел. и возвр.<br>
+<code>a++</code> - возвр. а потом увелич.</p>
+<h4 id="арифметика-указателей">Арифметика указателей</h4>
+<pre class=" language-c"><code class="prism ++ language-c"><span class="token keyword">int</span> a<span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span>
+<span class="token keyword">int</span> <span class="token operator">*</span> p <span class="token operator">=</span> <span class="token operator">&amp;</span>a<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">// *p == 15</span>
+<span class="token punctuation">(</span>p <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// - уменьшить на размер типа</span>
+<span class="token operator">*</span><span class="token punctuation">(</span>p <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">14</span>
+<span class="token operator">*</span><span class="token punctuation">(</span>p <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">17</span>
+</code></pre>
+<ul>
+<li>сложение указателя и число</li>
+<li>вычитание из указателя число</li>
+<li><code>ptrdiff_t n = p - q</code><br>
+Можно посмотреть на след за последним элементом массива, но компилятор может оптимизировать код, исходя из того, что мы не выходим за границы.</li>
+</ul>
+<pre class=" language-c"><code class="prism ++ language-c"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span> p <span class="token operator">=</span> a<span class="token punctuation">;</span> p <span class="token operator">!=</span> a  <span class="token operator">+</span><span class="token number">10</span><span class="token punctuation">;</span> <span class="token operator">++</span>p<span class="token punctuation">)</span>
+<span class="token keyword">int</span><span class="token operator">*</span> b<span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span> <span class="token operator">-</span> массив указателей
+<span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>b<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span> <span class="token operator">-</span> указатель на массив
+</code></pre>
+<p>Суффиксные модификаторы имеют больший приоритет.<br>
+<strong>Всякости:</strong></p>
+<pre class=" language-c"><code class="prism ++ language-c"><span class="token keyword">int</span><span class="token operator">*</span> <span class="token function">f</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token operator">-</span> ф<span class="token operator">-</span>ия возвр указатель
+<span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>g<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>f<span class="token punctuation">;</span> <span class="token operator">-</span> для динам<span class="token punctuation">.</span> полиморфизма
+
+<span class="token keyword">struct</span> point <span class="token punctuation">{</span>
+	<span class="token keyword">int</span> x<span class="token punctuation">;</span>
+	<span class="token keyword">int</span> y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">f</span> <span class="token punctuation">(</span>point<span class="token operator">*</span> p<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">5</span>
+	p<span class="token operator">-&gt;</span>x <span class="token operator">=</span> <span class="token number">5</span>		<span class="token comment">//эквивалентно</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> a<span class="token punctuation">[</span><span class="token number">50</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span><span class="token operator">*</span> p <span class="token operator">=</span> a<span class="token punctuation">;</span>
+p<span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token comment">// *(p -20) = 5</span>
+
+<span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>h<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token operator">*</span>g<span class="token punctuation">;</span>
+
+Вызываться может указатель на ф<span class="token operator">-</span>ию
+
+Указатель на <span class="token keyword">void</span> может хранить 
+любой другой указатель<span class="token punctuation">(</span>другого типа<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote>
+</div>
+</body>
+
+</html>
