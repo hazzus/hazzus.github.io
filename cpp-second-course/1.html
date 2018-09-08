@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1 lection - 08.09</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="intrusive-container">Intrusive Container</h1>
+<p>Задача из игры <strong>StarCraft</strong>. Необходим <code>set</code> двигающихся юнитов.</p>
+<pre class=" language-c"><code class="prism ++ language-c">set<span class="token operator">&lt;</span>unit<span class="token operator">*</span><span class="token operator">&gt;</span> all_units<span class="token punctuation">;</span>
+set<span class="token operator">&lt;</span>unit<span class="token operator">*</span><span class="token operator">&gt;</span> moving<span class="token punctuation">;</span>
+</code></pre>
+<p>Нам нужно будет добавлять/удалять юниты когда они начинают/заканчивают движение.<br>
+Можно ли сделать это эффективнее?<br>
+<strong>таблица Вани с пары</strong></p>
+<p>Свяжем юниты, которые потенциально двигаются в двусвязный список.(прямо на месте)<br>
+<strong>новая картинка</strong></p>
+<p>Такой список - <em>Intrusive Сontainer</em><br>
+<em>Intrusive</em> значит, что в нем могут хранится только элементы удовлетворяющие конкретным условием(здесь, и по другим источникам - принадлежать какому-то другому контейнеру)</p>
+<p>Вместо <code>unit*</code> ноды ссылаются на начало следующей ноды(нода здесь - именно та часть юнита, которая отвечает за intrusive container)<br>
+<code>offset</code> для первой части юнита константное.</p>
+<p>…</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Old</th>
+<th align="center">New</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Память</td>
+<td>2 + 1 [+ 2]</td>
+<td align="center">4</td>
+</tr>
+</tbody>
+</table><h2 id="сравним-intrusive-и-non-intrusive">Сравним intrusive и non-intrusive</h2>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="center">Intrusive</th>
+<th align="center">Non-Intrusive</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Память</td>
+<td align="center">обычно меньше ? +</td>
+<td align="center">обычно больше ? -</td>
+</tr>
+<tr>
+<td>Число аллокаций</td>
+<td align="center">меньше +</td>
+<td align="center">больше -</td>
+</tr>
+<tr>
+<td>Аллокация объекта</td>
+<td align="center">требует -</td>
+<td align="center">не требует +</td>
+</tr>
+<tr>
+<td>контейнеры</td>
+<td align="center">не копируемые -</td>
+<td align="center">копируемые +</td>
+</tr>
+<tr>
+<td>удаление элементов</td>
+<td align="center">нет <strong>-</strong></td>
+<td align="center">да +</td>
+</tr>
+<tr>
+<td>гарантии безопасности</td>
+<td align="center">лучше(большинство nothrow) +</td>
+<td align="center">хуже -</td>
+</tr>
+<tr>
+<td>значение <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> итератор</td>
+<td align="center">да +</td>
+<td align="center">нет -</td>
+</tr>
+</tbody>
+</table><h1 id="multi-index-containers">Multi-index containers</h1>
+<ol>
+<li>bimap</li>
+<li>lru_cache</li>
+</ol>
+<pre class=" language-c"><code class="prism ++ language-c"><span class="token keyword">struct</span> person <span class="token punctuation">{</span>
+	string name<span class="token punctuation">;</span>
+	<span class="token keyword">int</span> age<span class="token punctuation">;</span>
+	person_id id<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+multi_map<span class="token operator">&lt;</span>string<span class="token punctuation">,</span> person<span class="token operator">*</span><span class="token operator">&gt;</span> by_name<span class="token punctuation">;</span>
+map<span class="token operator">&lt;</span>person_id<span class="token punctuation">,</span> person<span class="token operator">*</span><span class="token operator">&gt;</span> by_id<span class="token punctuation">;</span>
+
+<span class="token keyword">char</span> <span class="token keyword">const</span><span class="token operator">*</span> name_begin<span class="token punctuation">;</span>
+<span class="token keyword">char</span> <span class="token keyword">const</span><span class="token operator">*</span> name_end<span class="token punctuation">;</span>
+<span class="token comment">// -----------------</span>
+string_ref name<span class="token punctuation">;</span>
+
+bg_name<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token function">string</span><span class="token punctuation">(</span>name_begin<span class="token punctuation">,</span> name_end<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><strong>heterogeneous lookup</strong></p>
+<h1 id="shared-pointer">Shared pointer</h1>
+<p><code>shared_ptr</code></p>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote>
+</div>
+</body>
+
+</html>
