@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C++ 31 march</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="оптимизации-кода">Оптимизации кода</h1>
+<h2 id="аллокация-памяти">Аллокация памяти</h2>
+<p>В linux существует команда, которая умеет отображать в физическую память что-либо: <strong>mmap</strong></p>
+<pre class=" language-c"><code class="prism ++ language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sys/mman.h&gt;</span></span>
+<span class="token keyword">void</span> <span class="token function">nmap</span><span class="token punctuation">(</span><span class="token keyword">void</span> addr<span class="token operator">*</span><span class="token punctuation">,</span> size_t len<span class="token punctuation">)</span>
+</code></pre>
+<p>Противоположная команда <strong>munmap</strong></p>
+<pre class=" language-c"><code class="prism ++ language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sys/mman.h&gt;</span></span>
+<span class="token keyword">int</span> <span class="token function">munmap</span> <span class="token punctuation">(</span><span class="token keyword">void</span> addr<span class="token operator">*</span><span class="token punctuation">,</span> size_t len<span class="token punctuation">)</span>
+</code></pre>
+<p>Это достаточно дорогие операции. По 2 причинам:</p>
+<ol>
+<li>Ядро зануляет память прежде чем ее “выдавать”.</li>
+<li>Процессор пытается кэшировать память. Если мы делаем эти команды, мы каждый раз инициализируем кэш</li>
+<li>(менее влиятельная) в linux RB tree хранит кусочки памяти для процесса (логарифм на поиск)</li>
+</ol>
+<p>Теперь очевидно что <code>malloc</code> быстрее.<br>
+Все современные аллокаторы памяти используют один и тот же алгоритм, а остальные детали дают достаточно маленький вклад.</p>
+<p>Один из возможных способов хранения свободной памяти - двоичное дерево поиска со спец ключами(чет там Саша говорила). Но такое используют только для больших объектов.<br>
+Для маленьких объектов используют общий для всех аллокаторов алгоритм. У нас есть большой кусок, мы его нарезаем его на куски нашего размера. Храним односвязный список свободных кусков памяти (в виде стека) Сами данные мы можем держать прямо внутри кусочков.</p>
+<blockquote>
+<p>картинка с этой структуркой</p>
+</blockquote>
+<p>Что-то про неравномерные куски памяти<br>
+Для больших объектов не так важна скорость, так как если мы большое аллоцируем, то мы всегда пишем в эту память что-то.</p>
+<h2 id="copy-on-write-оптимизация">Copy on write оптимизация</h2>
+<p>Копирование не происходит до того момента, пока не потребуется изменение. До этого копия указывает на тот же объект в памяти что и оригинал.</p>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote>
+</div>
+</body>
+
+</html>
