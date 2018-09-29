@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2 lection - 29.09</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="rvalue">Rvalue</h1>
+<p>Поговорим о передаче и возвращении параметров в фун-циях</p>
+<pre class=" language-c"><code class="prism ++ language-c"><span class="token keyword">struct</span> big_struct <span class="token punctuation">{</span>
+	std<span class="token punctuation">:</span><span class="token punctuation">:</span>array<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token operator">&gt;</span> data<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token punctuation">)</span> <span class="token comment">//int по значению передается(копируется через </span>
+<span class="token comment">// регистры) Но это до 7 парметров, больше - в стек</span>
+
+<span class="token keyword">void</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span> <span class="token punctuation">)</span> <span class="token comment">// происходит то же самое</span>
+
+<span class="token keyword">void</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">&amp;</span> <span class="token punctuation">)</span> <span class="token comment">// передастся как указатель</span>
+
+<span class="token keyword">void</span> <span class="token function">foo</span><span class="token punctuation">(</span>big_struct <span class="token punctuation">)</span> <span class="token comment">//</span>
+
+<span class="token comment">//---------example--------</span>
+big_struct a<span class="token punctuation">;</span>
+<span class="token function">f</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//---------1 variant----------(копирование вне ф-ии)</span>
+big_struct a<span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
+	big_struct copy <span class="token operator">=</span> a<span class="token punctuation">;</span>
+	<span class="token function">f</span><span class="token punctuation">(</span>copy<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">f</span><span class="token punctuation">(</span>big_struct <span class="token operator">&amp;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span>
+<span class="token comment">//--------2 var--------------(копирование внутри ф-ии)</span>
+big_struct a<span class="token punctuation">;</span>
+<span class="token function">f</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+<span class="token keyword">void</span> <span class="token function">f</span><span class="token punctuation">(</span>big_strct <span class="token keyword">const</span><span class="token operator">&amp;</span> a<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	big_struct copy <span class="token operator">=</span> a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// ----------------------</span>
+<span class="token comment">// Pascal делает 2 варик</span>
+<span class="token comment">// C++ первый - потому что эту копиюю можно не делать</span>
+<span class="token comment">// например для rvalue</span>
+
+<span class="token keyword">int</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// кладет в регистр(малые структуры - 2/3 регистра)</span>
+
+big_struct <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// перед вызовом на стеке выделяется </span>
+<span class="token comment">//достаточно места и результат пишется туда</span>
+
+<span class="token comment">//напишем как сие дело транслируется </span>
+big_struct <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">g</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	big_struct a <span class="token operator">=</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//---------res------------</span>
+<span class="token keyword">void</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token operator">*</span> result<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+	<span class="token function">ctor_big_struct</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">g</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">char</span> a_buf<span class="token punctuation">[</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>big_struct<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// + align storage</span>
+	<span class="token function">f</span><span class="token punctuation">(</span>a_buf<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	big_struct<span class="token operator">&amp;</span> a <span class="token operator">=</span> <span class="token punctuation">(</span>big_struct<span class="token operator">&amp;</span><span class="token punctuation">)</span>a_buf<span class="token punctuation">;</span> <span class="token comment">//типа reinterpret_cast</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//----------------------</span>
+
+big_struct <span class="token function">g</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">f</span><span class="token punctuation">(</span>big <span class="token keyword">struct</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h2 id="где-не-происходит-и-не-происходило-копирований-">Где не происходит и не происходило копирований ?</h2>
+<pre><code>f(g()) // 0 копирований
+</code></pre>
+<p>Просто real work - rvalue</p>
+<h3 id="rvo">RVO</h3>
+<pre><code>// Еще 2 места где копирований нет
+// До С++17 это не было гарантировано, но существовало всегда
+
+struct big_struct {
+	big_struct(int, int, int);
+}; 
+big_struct g() {
+	....
+	return big_struct(1, 2, 3);
+}
+// ------ naive work -----
+void g(void* result) {
+	char tmp[sizeof(big_struct)];
+	big_struct_ctor(tmp, 1, 2, 3);
+	big_struct_ctor(result, (big_struct&amp;) tmp);
+}
+// ------ real work -----
+void g(void* result) {
+	big_struct_ctor(result, 1, 2, 3);
+}
+// This is obvious
+// RVO - Return Value Optimisation
+</code></pre>
+<h3 id="nrvo">NRVO</h3>
+<pre><code>// Еще 1
+big_struct g() {
+	big_struct tmp(1, 2, 3);
+	...
+	return tmp;
+}
+// Мы можем создать переменнуюна резалте, но только 
+// если это очевидно. Если среди кода будет return, то это
+// будет непредсказуемо и такая оптимизация невозможна
+
+// real work
+some code pic from lection(hard)
+
+// Name - NRVO
+</code></pre>
+<h2 id="а-теперь-где-копии-делаются-и-как-их-там-не-делать">А теперь, где копии делаются и как их там не делать?</h2>
+<pre class=" language-c"><code class="prism ++ language-c">std<span class="token punctuation">:</span><span class="token punctuation">:</span>vector<span class="token operator">&lt;</span>std<span class="token punctuation">:</span><span class="token punctuation">:</span>string<span class="token operator">&gt;</span> r<span class="token punctuation">;</span>
+std<span class="token punctuation">:</span><span class="token punctuation">:</span>string s<span class="token punctuation">;</span>
+r<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+std<span class="token punctuation">:</span><span class="token punctuation">:</span>vector<span class="token operator">&lt;</span>file_descriptor<span class="token operator">&gt;</span> r<span class="token punctuation">;</span>
+std<span class="token punctuation">:</span><span class="token punctuation">:</span>vector<span class="token operator">&lt;</span>file_descriptor<span class="token operator">*</span><span class="token operator">&gt;</span> r<span class="token punctuation">;</span>
+std<span class="token punctuation">:</span><span class="token punctuation">:</span>vector<span class="token operator">&lt;</span>boost<span class="token punctuation">:</span><span class="token punctuation">:</span>shared_ptr<span class="token operator">&lt;</span>file_descriptor<span class="token operator">&gt;&gt;</span> r<span class="token punctuation">;</span>
+</code></pre>
+<h2 id="что-же-такое-move-семантика">Что же такое move семантика?</h2>
+<pre class=" language-c"><code class="prism ++ language-c"><span class="token function">string</span><span class="token punctuation">(</span>string <span class="token keyword">const</span><span class="token operator">&amp;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">string</span><span class="token punctuation">(</span>string<span class="token operator">&amp;</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// мне не важно что будет с исходным</span>
+</code></pre>
+<p>Swap-trick придумали, потому что не было move<br>
+А еще move’аться может много чего, что не может копироваться</p>
+<p>Конструктор вида <code>string(string&amp; );</code> это очень плохо, потому что это неочевидное поведение, которого мы не можем ожидать.</p>
+<p>На самом деле компилятор ничего не знает про move, есть только rvalue</p>
+<p>Что поменялось в c++11 - разрешили перегружать по rvalue и lvalue<br>
+<code>push_back(...)</code> - как понять можно ли менять то что передали? - rvalue</p>
+<h2 id="rvalue-1">Rvalue</h2>
+<p>&amp; - lvalue<br>
+&amp;&amp; - rvalue</p>
+<pre class=" language-c"><code class="prism ++ language-c"><span class="token function">string</span><span class="token punctuation">(</span>string <span class="token keyword">const</span><span class="token operator">&amp;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//copy</span>
+<span class="token function">string</span><span class="token punctuation">(</span>string<span class="token operator">&amp;&amp;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//move</span>
+
+<span class="token keyword">void</span> <span class="token function">push_back</span><span class="token punctuation">(</span>T <span class="token keyword">const</span><span class="token operator">&amp;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//usual</span>
+<span class="token keyword">void</span> <span class="token function">push_back</span><span class="token punctuation">(</span>T<span class="token operator">&amp;&amp;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//move </span>
+</code></pre>
+<h2 id="как-делать-не-надо">Как делать не надо</h2>
+<pre class=" language-c"><code class="prism ++ language-c">string <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	string res <span class="token operator">=</span> <span class="token string">"hello"</span><span class="token punctuation">;</span>
+	rest <span class="token operator">+</span><span class="token operator">=</span> <span class="token string">"wrld"</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> res<span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token function">move</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// так делать не надо, это явное подавление NRVO </span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="smth-about-noexcept">Smth about noexcept</h2>
+<h2 id="второе-применение-rvalue-ссылок">Второе применение rvalue ссылок</h2>
+<h3 id="forwarding">Forwarding</h3>
+<pre class=" language-c"><code class="prism ++ language-c"><span class="token keyword">void</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+template<span class="token operator">&lt;</span>typename T<span class="token operator">&gt;</span>
+<span class="token keyword">void</span> <span class="token function">g</span><span class="token punctuation">(</span>T a<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token function">f</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// настоящее копирование</span>
+</code></pre>
+<p>Здесь должны быть приколы с выводом ссылок и все такое<br>
+типа<br>
+&amp;         &amp; -&gt; &amp;<br>
+&amp;&amp;      &amp; -&gt; &amp;<br>
+&amp;      &amp;&amp; -&gt; &amp;<br>
+&amp;&amp;   &amp;&amp; -&gt; &amp;&amp;</p>
+<pre class=" language-c"><code class="prism ++ language-c">template <span class="token operator">&lt;</span>typename T<span class="token operator">&gt;</span>
+T<span class="token operator">&amp;&amp;</span> <span class="token function">forward</span><span class="token punctuation">(</span>T<span class="token operator">&amp;&amp;</span> a<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> static_cast<span class="token operator">&lt;</span>T<span class="token operator">&amp;&amp;</span><span class="token operator">&gt;</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote>
+</div>
+</body>
+
+</html>
