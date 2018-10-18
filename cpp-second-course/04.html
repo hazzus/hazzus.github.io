@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4 lection - 13.10</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="signals--aka-listeners-">Signals ( aka listeners )</h1>
+<p>Это не <s>Unix-signals</s><br>
+Это типа обработчика событий</p>
+<pre class=" language-c"><code class="prism ++ language-c"><span class="token keyword">struct</span> signal <span class="token punctuation">{</span>
+	<span class="token keyword">typedef</span> function<span class="token operator">&lt;</span><span class="token keyword">void</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&gt;</span> slot<span class="token punctuation">;</span>
+	<span class="token keyword">void</span> <span class="token function">connect</span><span class="token punctuation">(</span>slot s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		slots<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token function">move</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">void</span> <span class="token function">operator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
+		<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span><span class="token operator">&amp;&amp;</span> s <span class="token punctuation">:</span> slots<span class="token punctuation">)</span> 
+		try <span class="token punctuation">{</span>
+			<span class="token function">s</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span> <span class="token function">catch</span> <span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"......"</span><span class="token punctuation">)</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+private<span class="token punctuation">:</span>
+	vector<span class="token operator">&lt;</span>slot<span class="token operator">&gt;</span> slots<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote>
+</div>
+</body>
+
+</html>
