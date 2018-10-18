@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3 lection - 06.10</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h2 id="auto"><code>auto</code></h2>
+<p>Вот смотрите как было</p>
+<pre class=" language-c"><code class="prism ++ language-c">std<span class="token punctuation">:</span><span class="token punctuation">:</span>vector<span class="token operator">&lt;</span>std<span class="token punctuation">:</span><span class="token punctuation">:</span>string<span class="token operator">&gt;</span> v<span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span>std<span class="token punctuation">:</span><span class="token punctuation">:</span>vector<span class="token operator">&lt;</span>std<span class="token punctuation">:</span><span class="token punctuation">:</span>string<span class="token operator">&gt;</span><span class="token punctuation">:</span><span class="token punctuation">:</span>iterator i <span class="token operator">=</span> b<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i <span class="token operator">!=</span> v<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+
+<span class="token comment">// новый</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> i <span class="token operator">=</span> b<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i <span class="token operator">!=</span> v<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+</code></pre>
+<p><code>auto</code> - это команда компилятору “выведи тип на основе возвращаемого значения”</p>
+<p><code>auto</code> это кусок типа<br>
+мы можем писать<br>
+<code>auto &amp;&amp; a = f();</code> или <code>auto &amp; a = f();</code><br>
+и даже вот так все типы выведутся<br>
+<code>auto a = f(), b = g();</code></p>
+<h2 id="безымянные-ф-ии">Безымянные ф-ии</h2>
+<pre class=" language-c"><code class="prism ++ language-c">template <span class="token operator">&lt;</span>typename It<span class="token punctuation">,</span> typename Comp<span class="token operator">&gt;</span>
+<span class="token keyword">void</span> <span class="token function">sort</span><span class="token punctuation">(</span>It first<span class="token punctuation">,</span> It last<span class="token punctuation">,</span> Comp comp<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+	<span class="token function">comp</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Надо описывать comp и придумывать для него имя, но зачем, если он используется по факту 1 раз.<br>
+Как делать правильно в C++11</p>
+<pre class=" language-c"><code class="prism ++ language-c"><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token function">abs</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token function">abs</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Это безымянная(анонимная) функция (лямбда). Что по факту делает компилятор - заводит локальную структуру с безымянным именем и определяет внутри <code>operator()</code><br>
+Если надо что-то из контекста</p>
+<pre class=" language-c"><code class="prism ++ language-c"><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> a <span class="token operator">%</span> k <span class="token operator">&lt;</span> b <span class="token operator">%</span> k<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token comment">// не капчурим(capture) ничего</span>
+<span class="token punctuation">[</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">]</span> <span class="token comment">// скопированы и использованы</span>
+<span class="token punctuation">[</span><span class="token operator">&amp;</span>a<span class="token punctuation">,</span> <span class="token operator">&amp;</span>b<span class="token punctuation">,</span> <span class="token operator">&amp;</span>c<span class="token punctuation">]</span> <span class="token comment">//закапучерны по ссылке</span>
+ 
+</code></pre>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote>
+</div>
+</body>
+
+</html>
