@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VkHackathon</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="plan">Plan</h1>
+<h2 id="our-application-text">Our application text</h2>
+<p>Наша команда хочет предложить актуальную и технологичную платформу для <em>привлечения внимания</em> к музыкальной классике.<br>
+С использованием передовых технологий и обновленных подходов к представлению информации потенциальным слушателям будет предложено пересмотреть не только взгляды на творчество известных композиторов, чьи произведения регулярно исполняются в стенах Московской Филармонии, но и на музыкальное искусство в целом.<br>
+Технологии распознавания образов и лиц привнесут интерактивность в процесс знакомства с биографиями и достижениями авторов классических произведений. Пользователю будет легко получить основную информацию, лишь обратив камеру своего устройства на портрет композитора. Затем приложение определит личность на портрете и предложит ознакомиться с <strong>биографией, творческим путем, значимыми местами из жизни творца и предложит прослушать отрывки произведений или даже посетить ближайшие концерты, на которых будет звучать музыка, написанная этим человеком.</strong><br>
+Мы считаем, что продолжение музыкальной традиции, соединяющей многие поколения, занимает значимое место в процессе развития культурной среды в городе. Поэтому для сохранения интереса к музыке и ее создателям пользователям могут быть предложены следующие сервисы:<br>
+Подборки произведений, как индивидуализированные, на основе личных предпочтений, так и на текущих погодных условиях для получения полного спектра эмоций от прослушивания.<br>
+Встроенный музыкальный плеер, который позволит актуализировать представления о музыке “здесь и сейчас”. Для неискушенных слушателей будут предложены современные аранжировки великих произведений. Любители же и профессионалы смогут ознакомиться с партитурами и более глубоким анализом творчества композиторов.</p>
+<h2 id="aplication-main-tasks">Aplication main tasks</h2>
+<ol>
+<li><strong>Facial recognition(main task)</strong></li>
+<li>Providing actual data about composer, including(in decreasing priority order):
+<ul>
+<li>biography</li>
+<li>music</li>
+<li>mentions in billboards(Moscow Filarmony exactly)</li>
+<li>musical scores and deep analysis of crations</li>
+</ul>
+</li>
+<li>Ways to extend models by adding new data easily</li>
+</ol>
+<h2 id="our-priorities">Our priorities</h2>
+<ol>
+<li>Basic readiness ( IT’S WORKING!!)</li>
+<li>Presentation</li>
+<li>Nice interface</li>
+<li>Features</li>
+<li>Performance</li>
+</ol>
+<h2 id="aplication-technology-stack">Aplication technology stack</h2>
+<ul>
+<li>Django - main backend framework</li>
+<li>OpenCV (probably facial_recorgnition python lib) - buisness logic</li>
+<li>Bootstrap - good adaptive, animated frontend</li>
+</ul>
+<h2 id="technical-requirements">Technical requirements</h2>
+<p><em>That may cause problems</em></p>
+<ol>
+<li>Facial recognition (surprise, huh?)</li>
+<li>Camera interaction (just file upload, is there better way?)</li>
+<li>Music player (no ideas yet)</li>
+<li><em>Easy extending?</em></li>
+</ol>
+<h2 id="technical-issues-that-may-appear">Technical issues that may appear</h2>
+<ol>
+<li>What is the similarity(tolerance) percentage?</li>
+<li><em>More?</em></li>
+</ol>
+<h2 id="divide-and-conquer">Divide and conquer</h2>
+<p>Responsobilities may be divided on:</p>
+<ol>
+<li>Facial recogintion (fuck, again?)</li>
+<li>Collecting data (billboards, music, biography etc.) - good if parsing</li>
+<li>Backend and buisness logic</li>
+<li>Fontend and design</li>
+<li>Presentation and speech building<br>
+Possible division:</li>
+</ol>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Duty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kostya</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Artem</td>
+<td>2,5    ???</td>
+</tr>
+<tr>
+<td>Alexey</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Pavel</td>
+<td>3</td>
+</tr>
+</tbody>
+</table><h2 id="some-first-attempt-flowcharts">Some first attempt flowcharts</h2>
+<div class="mermaid"><svg xmlns="http://www.w3.org/2000/svg" id="mermaid-svg-x0ra5o8SheWlEvjc" width="100%" style="max-width: 714.5625px;" viewBox="0 0 714.5625 395.7203063964844"><g transform="translate(-12, -12)"><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath" style="opacity: 1;"><path class="path" d="M47.234375,241.8723478856837L139.25,90.86015319824219L295.45317468712227,106.19526586463553" marker-end="url(#arrowhead17002)" style="fill:none"></path><defs><marker id="arrowhead17002" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M475.00859375,114.36015319824219L563.6328125,113.86015319824219L597.234375,113.86015319824219" marker-end="url(#arrowhead17003)" style="fill:none"></path><defs><marker id="arrowhead17003" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M307.6628725062548,134.73474445449693L139.25,180.79022979736328L47.234375,253.46528653757838" marker-end="url(#arrowhead17004)" style="fill:none"></path><defs><marker id="arrowhead17004" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M47.234375,266.3473310248403L139.25,280.7203063964844L231.265625,280.7203063964844" marker-end="url(#arrowhead17005)" style="fill:none"></path><defs><marker id="arrowhead17005" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M47.234375,278.72274704436546L139.25,376.7203063964844L259.359375,376.7203063964844" marker-end="url(#arrowhead17006)" style="fill:none"></path><defs><marker id="arrowhead17006" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="translate(139.25,90.86015319824219)" style="opacity: 1;"><g transform="translate(-34.375,-13)" class="label"><foreignObject width="68.75" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">uploading</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(563.6328125,113.86015319824219)" style="opacity: 1;"><g transform="translate(-8.6015625,-13)" class="label"><foreignObject width="17.203125" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">ok</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(139.25,180.79022979736328)" style="opacity: 1;"><g transform="translate(-67.015625,-13)" class="label"><foreignObject width="134.03125" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">not ok(add fail flag)</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node" id="/" transform="translate(33.6171875,264.2203063964844)" style="opacity: 1;"><rect rx="0" ry="0" x="-13.6171875" y="-23" width="27.234375" height="46"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-3.6171875,-13)"><foreignObject width="7.234375" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">/</div></foreignObject></g></g></g><g class="node" id="mid" transform="translate(380.6484375,113.86015319824219)" style="opacity: 1;"><polygon points="93.86015625,0 187.7203125,-93.86015625 93.86015625,-187.7203125 0,-93.86015625" rx="5" ry="5" transform="translate(-93.86015625,93.86015625)"></polygon><g class="label" transform="translate(0,0)"><g transform="translate(-71.2890625,-13)"><foreignObject width="142.578125" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Recognition attempt</div></foreignObject></g></g></g><g class="node" id="result" transform="translate(657.8984375,113.86015319824219)" style="opacity: 1;"><rect rx="5" ry="5" x="-60.6640625" y="-23" width="121.328125" height="46"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-50.6640625,-13)"><foreignObject width="101.328125" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">/&lt;author&gt;/bio</div></foreignObject></g></g></g><g class="node" id="all" transform="translate(380.6484375,280.7203063964844)" style="opacity: 1;"><rect rx="5" ry="5" x="-149.3828125" y="-23" width="298.765625" height="46"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-139.3828125,-13)"><foreignObject width="278.765625" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">/composers - list all composers we have</div></foreignObject></g></g></g><g class="node" id="concerts" transform="translate(380.6484375,376.7203063964844)" style="opacity: 1;"><rect rx="5" ry="5" x="-121.2890625" y="-23" width="242.578125" height="46"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-111.2890625,-13)"><foreignObject width="222.578125" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">/concerts - list all soon concerts</div></foreignObject></g></g></g></g></g></g></svg></div>
+<h2 id="possible-database-arch">Possible database arch</h2>
+<div class="mermaid"><svg xmlns="http://www.w3.org/2000/svg" id="mermaid-svg-2qG4Ln0OadKXNkRB" width="100%" style="max-width: 312.1484375px;" viewBox="0 0 312.1484375 280"><g transform="translate(-12, -12)"><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath" style="opacity: 1;"><path class="path" d="M106.11027018229166,238L66,213L66,188" marker-end="url(#arrowhead17022)" style="fill:none"></path><defs><marker id="arrowhead17022" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M200.0234375,142L200.0234375,104L200.0234375,66" marker-end="url(#arrowhead17023)" style="fill:none"></path><defs><marker id="arrowhead17023" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M143.01171875,238L143.01171875,213L172.705322265625,188" marker-end="url(#arrowhead17024)" style="fill:none"></path><defs><marker id="arrowhead17024" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M204.81510416666666,188L210.0234375,213L175.12150065104166,238" marker-end="url(#arrowhead17025)" style="fill:none"></path><defs><marker id="arrowhead17025" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(200.0234375,104)" style="opacity: 1;"><g transform="translate(-116.125,-13)" class="label"><foreignObject width="232.25" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">Something probably needed here</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node" id="Composition" transform="translate(143.01171875,261)" style="opacity: 1;"><rect rx="0" ry="0" x="-54.71875" y="-23" width="109.4375" height="46"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-44.71875,-13)"><foreignObject width="89.4375" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Composition</div></foreignObject></g></g></g><g class="node" id="Composer" transform="translate(66,165)" style="opacity: 1;"><rect rx="0" ry="0" x="-46" y="-23" width="92" height="46"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-36,-13)"><foreignObject width="72" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Composer</div></foreignObject></g></g></g><g class="node" id="Concert" transform="translate(200.0234375,165)" style="opacity: 1;"><rect rx="0" ry="0" x="-38.0234375" y="-23" width="76.046875" height="46"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-28.0234375,-13)"><foreignObject width="56.046875" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Concert</div></foreignObject></g></g></g><g class="node" id="ConcertHall" transform="translate(200.0234375,43)" style="opacity: 1;"><rect rx="0" ry="0" x="-51.7578125" y="-23" width="103.515625" height="46"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-41.7578125,-13)"><foreignObject width="83.515625" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">ConcertHall</div></foreignObject></g></g></g></g></g></g></svg></div>
+<p>Fields:</p>
+<ul>
+<li><code>Composer</code>
+<ul>
+<li>name</li>
+<li>bio</li>
+<li>photo</li>
+<li>recognition masks</li>
+</ul>
+</li>
+<li><code>Composition</code>
+<ul>
+<li>Author <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>Composer</code></li>
+<li>Score, notes</li>
+<li>Audio recording</li>
+</ul>
+</li>
+<li><code>Concert</code>
+<ul>
+<li>Place <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>ConcertHall</code></li>
+<li>Performers</li>
+<li>Time</li>
+<li>Outsource (tickets, etc.)</li>
+</ul>
+</li>
+<li><code>ConcertHall</code>
+<ul>
+<li>Geolocation</li>
+<li>Information(phones etc)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote>
+</div>
+</body>
+
+</html>
