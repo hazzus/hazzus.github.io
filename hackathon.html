@@ -60,78 +60,46 @@
 <h2 id="divide-and-conquer">Divide and conquer</h2>
 <p>Responsobilities may be divided on:</p>
 <ol>
-<li>Facial recogintion (fuck, again?)</li>
-<li>Collecting data (billboards, music, biography etc.) - good if parsing</li>
-<li>Backend and buisness logic</li>
-<li>Fontend and design</li>
-<li>Presentation and speech building<br>
-Possible division:</li>
+<li>Facial recogintion (fuck, again?)
+<ul>
+<li>Writing main function</li>
+<li>Testing</li>
+</ul>
+</li>
+<li>Backend and buisness logic
+<ul>
+<li>Models (Database structure)</li>
+<li>Views (Buisness logic for accessing site path)</li>
+<li>Deployment and security settings</li>
+<li>Forms (Do we need to separete it?)</li>
+<li>Connecting facial - back - front</li>
+</ul>
+</li>
+<li>Fontend and design
+<ul>
+<li>Design many versions - adjustable</li>
+<li>Main page</li>
+<li>JS integration(for camera maybe)</li>
+<li>Other pages?</li>
+</ul>
+</li>
+<li>Presentation and speech building
+<ul>
+<li>Presentation</li>
+<li>Speech</li>
+<li>Pictures</li>
+<li>Demos</li>
+</ul>
+</li>
+<li>Data
+<ul>
+<li>Data collecting???</li>
+<li>Or outsourcing</li>
+</ul>
+</li>
 </ol>
-
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Duty</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Kostya</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Artem</td>
-<td>2,5    ???</td>
-</tr>
-<tr>
-<td>Alexey</td>
-<td>4</td>
-</tr>
-<tr>
-<td>Pavel</td>
-<td>3</td>
-</tr>
-</tbody>
-</table><h2 id="some-first-attempt-flowcharts">Some first attempt flowcharts</h2>
-<div class="mermaid"><svg xmlns="http://www.w3.org/2000/svg" id="mermaid-svg-xcyqCnFsTytA9hmn" width="100%" style="max-width: 714.5625px;" viewBox="0 0 714.5625 395.7203063964844"><g transform="translate(-12, -12)"><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath" style="opacity: 1;"><path class="path" d="M47.234375,241.8723478856837L139.25,90.86015319824219L295.45317468712227,106.19526586463553" marker-end="url(#arrowhead17044)" style="fill:none"></path><defs><marker id="arrowhead17044" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M475.00859375,114.36015319824219L563.6328125,113.86015319824219L597.234375,113.86015319824219" marker-end="url(#arrowhead17045)" style="fill:none"></path><defs><marker id="arrowhead17045" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M307.6628725062548,134.73474445449693L139.25,180.79022979736328L47.234375,253.46528653757838" marker-end="url(#arrowhead17046)" style="fill:none"></path><defs><marker id="arrowhead17046" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M47.234375,266.3473310248403L139.25,280.7203063964844L231.265625,280.7203063964844" marker-end="url(#arrowhead17047)" style="fill:none"></path><defs><marker id="arrowhead17047" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M47.234375,278.72274704436546L139.25,376.7203063964844L259.359375,376.7203063964844" marker-end="url(#arrowhead17048)" style="fill:none"></path><defs><marker id="arrowhead17048" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="translate(139.25,90.86015319824219)" style="opacity: 1;"><g transform="translate(-34.375,-13)" class="label"><foreignObject width="68.75" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">uploading</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(563.6328125,113.86015319824219)" style="opacity: 1;"><g transform="translate(-8.6015625,-13)" class="label"><foreignObject width="17.203125" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">ok</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(139.25,180.79022979736328)" style="opacity: 1;"><g transform="translate(-67.015625,-13)" class="label"><foreignObject width="134.03125" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">not ok(add fail flag)</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node" id="/" transform="translate(33.6171875,264.2203063964844)" style="opacity: 1;"><rect rx="0" ry="0" x="-13.6171875" y="-23" width="27.234375" height="46"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-3.6171875,-13)"><foreignObject width="7.234375" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">/</div></foreignObject></g></g></g><g class="node" id="mid" transform="translate(380.6484375,113.86015319824219)" style="opacity: 1;"><polygon points="93.86015625,0 187.7203125,-93.86015625 93.86015625,-187.7203125 0,-93.86015625" rx="5" ry="5" transform="translate(-93.86015625,93.86015625)"></polygon><g class="label" transform="translate(0,0)"><g transform="translate(-71.2890625,-13)"><foreignObject width="142.578125" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Recognition attempt</div></foreignObject></g></g></g><g class="node" id="result" transform="translate(657.8984375,113.86015319824219)" style="opacity: 1;"><rect rx="5" ry="5" x="-60.6640625" y="-23" width="121.328125" height="46"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-50.6640625,-13)"><foreignObject width="101.328125" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">/&lt;author&gt;/bio</div></foreignObject></g></g></g><g class="node" id="all" transform="translate(380.6484375,280.7203063964844)" style="opacity: 1;"><rect rx="5" ry="5" x="-149.3828125" y="-23" width="298.765625" height="46"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-139.3828125,-13)"><foreignObject width="278.765625" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">/composers - list all composers we have</div></foreignObject></g></g></g><g class="node" id="concerts" transform="translate(380.6484375,376.7203063964844)" style="opacity: 1;"><rect rx="5" ry="5" x="-121.2890625" y="-23" width="242.578125" height="46"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-111.2890625,-13)"><foreignObject width="222.578125" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">/concerts - list all soon concerts</div></foreignObject></g></g></g></g></g></g></svg></div>
-<h2 id="possible-database-arch">Possible database arch</h2>
-<div class="mermaid"><svg xmlns="http://www.w3.org/2000/svg" id="mermaid-svg-0a407s6gK6Dlgu6x" width="100%" style="max-width: 312.1484375px;" viewBox="0 0 312.1484375 280"><g transform="translate(-12, -12)"><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath" style="opacity: 1;"><path class="path" d="M106.11027018229166,238L66,213L66,188" marker-end="url(#arrowhead17064)" style="fill:none"></path><defs><marker id="arrowhead17064" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M200.0234375,142L200.0234375,104L200.0234375,66" marker-end="url(#arrowhead17065)" style="fill:none"></path><defs><marker id="arrowhead17065" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M143.01171875,238L143.01171875,213L172.705322265625,188" marker-end="url(#arrowhead17066)" style="fill:none"></path><defs><marker id="arrowhead17066" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M204.81510416666666,188L210.0234375,213L175.12150065104166,238" marker-end="url(#arrowhead17067)" style="fill:none"></path><defs><marker id="arrowhead17067" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(200.0234375,104)" style="opacity: 1;"><g transform="translate(-116.125,-13)" class="label"><foreignObject width="232.25" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">Something probably needed here</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node" id="Composition" transform="translate(143.01171875,261)" style="opacity: 1;"><rect rx="0" ry="0" x="-54.71875" y="-23" width="109.4375" height="46"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-44.71875,-13)"><foreignObject width="89.4375" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Composition</div></foreignObject></g></g></g><g class="node" id="Composer" transform="translate(66,165)" style="opacity: 1;"><rect rx="0" ry="0" x="-46" y="-23" width="92" height="46"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-36,-13)"><foreignObject width="72" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Composer</div></foreignObject></g></g></g><g class="node" id="Concert" transform="translate(200.0234375,165)" style="opacity: 1;"><rect rx="0" ry="0" x="-38.0234375" y="-23" width="76.046875" height="46"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-28.0234375,-13)"><foreignObject width="56.046875" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Concert</div></foreignObject></g></g></g><g class="node" id="ConcertHall" transform="translate(200.0234375,43)" style="opacity: 1;"><rect rx="0" ry="0" x="-51.7578125" y="-23" width="103.515625" height="46"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-41.7578125,-13)"><foreignObject width="83.515625" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">ConcertHall</div></foreignObject></g></g></g></g></g></g></svg></div>
-<p>Fields:</p>
-<ul>
-<li><code>Composer</code>
-<ul>
-<li>name</li>
-<li>bio</li>
-<li>photo</li>
-<li>recognition masks</li>
-</ul>
-</li>
-<li><code>Composition</code>
-<ul>
-<li>Author <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>Composer</code></li>
-<li>Score, notes</li>
-<li>Audio recording</li>
-</ul>
-</li>
-<li><code>Concert</code>
-<ul>
-<li>Place <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>ConcertHall</code></li>
-<li>Performers</li>
-<li>Time</li>
-<li>Outsource (tickets, etc.)</li>
-</ul>
-</li>
-<li><code>ConcertHall</code>
-<ul>
-<li>Geolocation</li>
-<li>Information(phones etc)</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
-</blockquote>
+<iframe src="https://mermaidjs.github.io/mermaid-live-editor/#/view/eyJjb2RlIjoiZ2FudHRcbmRhdGVGb3JtYXQgIFlZWVktTU0tREQgSEg6bW1cbnRpdGxlIEZvdW5kYW1lbnRhbCBBcHBsaWNhdGlvblxuXG5zZWN0aW9uIEFydGVtXG5bRGF0YV1EYXRhIGNvbGxlY3QgZm9yIHRlc3QgICAgICAgICA6ZGF0YSwgMzBtXG5bRnJvbnRdRGVzaWduIGFuZCBodG1sIGhlbHAgICAgICA6ZGVzaW5nLCA2MG1cbltGYWNlc11UZXN0aW5nICAgICAgICAgICAgICAgICAgICAgICAgICA6ZmFjZXRlc3QsIGFmdGVyIGZhY2VzLCA0MG1cblxuc2VjdGlvbiBLb3N0eWFcbltGYWNlc11GYWNlIHJlY29nbml0aW9uICAgICAgICAgICA6ZmFjZXMsIDE3OjAwLCAzMG1cbltGYWNlc11UZXN0aW5nICAgICAgICAgICAgICAgICAgICAgICAgICA6ZmFjZXRlc3QsIGFmdGVyIGZhY2VzLCA0MG1cblxuc2VjdGlvbiBBbGV4XG5bRnJvbnRdTWFpbiBwYWdlICAgICAgICAgICAgICAgICAgICAgIDptcGFnZSwgMTc6MDAsIDFoXG5cbnNlY3Rpb24gUGFzaGFcbltCYWNrXU1vZGVscyAgICAgICAgICAgICAgICAgICAgICAgICAgIDptb2RlbCwgMTc6MDAsIDMwbVxuW0JhY2tdTWFpbiB2aWV3ICAgICAgICAgICAgICAgICAgICAgICA6dmlldywgYWZ0ZXIgbW9kZWwsIDMwbSBcbltCYWNrXUNvbmVuY3RpbmcgcGFydHMgICAgICAgICAgIDpjb25uZWN0LCBhZnRlciB2aWV3LCAxMG1cblxuc2VjdGlvbiBHZW5lcmFsXG5bR2VuZXJhbF1VcGxvYWRpbmcgZGF0YSBpbnNpZGUgOmZpbGxpbmcsIGFmdGVyIGNvbm5lY3QsIDMwbSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In19" width="1000" height="370"></iframe>
+&gt; Written with [StackEdit](https://stackedit.io/).
 </div>
 </body>
 
