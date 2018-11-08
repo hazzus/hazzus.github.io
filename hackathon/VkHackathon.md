@@ -1,4 +1,4 @@
-# Plan
+﻿# Plan
 ## Our application text
 Наша команда хочет предложить актуальную и технологичную платформу для *привлечения внимания* к музыкальной классике.
 С использованием передовых технологий и обновленных подходов к представлению информации потенциальным слушателям будет предложено пересмотреть не только взгляды на творчество известных композиторов, чьи произведения регулярно исполняются в стенах Московской Филармонии, но и на музыкальное искусство в целом.
@@ -100,4 +100,5 @@ end
 ### Phones
 ![
 ](https://lh3.googleusercontent.com/G1JbA4otKUwasTt6bZw2MsM5ltCquMvw17HQRRbFR_Dy4hj6Z03upAkOkNRI8SHHnkMeUrDwhCZz "Phone design")
-### Comps
+### Desktops   
+![Comps](https://lh3.googleusercontent.com/lQTrCFf9NdoQe5lG-h8qpQt9zlHY1PrPyQASUh4G88ibarPwEYXlCNpX_xJ6OGrPKH3-FPSCLwdV_jsmNU9iY61j5PQ9k2dJJLA8BxgtQdFAg34GpmeTWxGd2Oy4J2HrN5R7DImUCGjx--NxOsrli2_yNyjS6vNoVPPtSoo28hPUNFtsKs_L1xaw4SACi8cbrafz8TDs6k4kqQ3jhFRo1AXG-XHHS1CeWSNFFyYNeRLCvJeLMmjBF9Kca-jQi2gtM7i9-pC6kzZAOZHlgrr86GOeMbtwaj2T_2YnO10sDOMgPiaJC5hlinr8LZXY5Ft9piuNg9b5L0BFOmRVmuTpIFcv7b8gFV2s_f1EKTK_J6OwRz6LWVagBhQV96q8SP3BMUPXuwTeANQ8hDjpQ7Whwm7YFwqYuFwlzepUJCPCVJRfx3JXGEtRoUxwKKmsEfELUlXWGezDGBS5NPI0uxrqDH-YPiWbMnwW9P21yPHEylcE07DDSFmJAwXrXjCxu38oGMkAq4Ul2djva1L9sx88ZbKAlUgOf95FlPadB_SVR9-Kp8OfbXsFf96SoAjcs1dSMg7GgRhlU6clwjYDITc-KdgGaZmre5cM9STF-uafiazh6eja3EenHGH8ccOI8xg1gD8G-z9vuyVX5bNre3WFUujiiXLV60X6FeHyTbmT_PA=w769-h921-no)
