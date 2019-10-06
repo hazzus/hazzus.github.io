@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>25.05 С++, структуры и STL</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="структуры-stl">25.05 Структуры STL</h1>
+<h2 id="links-for-today">Links for today</h2>
+<p><a href="https://vk.com/wall-54530371_110036">Топчик книг по основам C++</a><br>
+<a href="%5Bhttps://en.cppreference.com/w/%5D(https://en.cppreference.com/w/)">Cpp reference</a> (плохо с английским - есть переводы)</p>
+<h2 id="структуры-данных">Структуры данных</h2>
+<ol>
+<li>Что такое структуры данных и зачем они нужны</li>
+<li>Применение в олимпиадном программировании</li>
+<li>Что такое STL и что там есть. STL - Standard Template Libraries</li>
+</ol>
+<h2 id="c-and-stl-basics">C++ and STL basics</h2>
+<p><code>std::</code> - пространство имен, чтобы включить его пишите<br>
+<code>using namespace std;</code><br>
+STL состоит из 9 секций, вам понадобятся только 4 (мб 5)</p>
+<h3 id="контейнеры">Контейнеры</h3>
+<p>Контейнеры это базовые структуры данных.</p>
+<ol>
+<li>Контейнеры с прямым доступом
+<ul>
+<li><code>std::array</code></li>
+<li><code>std::vector</code></li>
+<li><code>std::deque</code></li>
+</ul>
+</li>
+<li>Ассоциативные контейнеры
+<ul>
+<li><code>std::set std::multiset</code></li>
+<li><code>std::map std::multimap</code></li>
+</ul>
+</li>
+<li>Связные контейнеры
+<ul>
+<li><code>std::list</code></li>
+<li><code>std::stack</code></li>
+<li><code>std::queue</code></li>
+</ul>
+</li>
+<li>Контейнеры с хешированием
+<ul>
+<li><code>std::unordered_set</code></li>
+<li><code>std::unordered_map</code></li>
+</ul>
+</li>
+</ol>
+<p>Примеры с контейнерами. Написать например массив и посортить его, показать как проверить ПСП на стеке.</p>
+<h3 id="алгоритмы">Алгоритмы</h3>
+<p><code>#include &lt;algorithm&gt;</code><br>
+Что там есть: <strong>очень</strong> много всего<br>
+Что вам реально может понадобится:</p>
+<ol>
+<li><code>std::sort(), std::partial_sort()</code></li>
+<li><code>std::nth_element()</code></li>
+<li><code>std::upper_bound(), std::lower_bound()</code></li>
+<li><code>std::binary_search()</code></li>
+<li><code>std::min(), std::max()</code></li>
+<li>Операции с кучей и множествами (потом)<br>
+Примеры: посортить массив, найти максимум или n-ый, пересечь множества</li>
+</ol>
+<h3 id="строки">Строки</h3>
+<p><code>#include &lt;string&gt;</code><br>
+Это вы должны знать, надеюсь</p>
+<h3 id="потоки-streams">Потоки (streams)</h3>
+<p><code>#include &lt;iostream&gt;</code><br>
+<code>#include &lt;fstream&gt;</code><br>
+Вы не обязаны понимать как это устроено, просто пользуйтесь<br>
+<code>ifstream</code> и <code>ofstream</code> для файлов, <code>cin</code> и <code>cout</code> для консоли</p>
+<h3 id="numeric">Numeric</h3>
+<p>Комлексные числа, random-related операции<br>
+Интересно - изучите сами, оно вам не всегда надо</p>
+<h3 id="больше-об-stl">Больше об STL</h3>
+<p>STL это буст к вашей скорости, многие задачи и другие алгоритмы основываются на этих структурах, вам не нужно писать их самому. Тем не менее важно знать как они работают и иногда детали реализации.</p>
+<h2 id="подробнее-о-контейнерах">Подробнее о контейнерах</h2>
+<ol>
+<li>FIFO, LIFO</li>
+<li>Что такое шаблоны (не надо вам это знать, вы еще молодые, шутливые)</li>
+</ol>
+<h2 id="что-есть-крутого-в-новых-версиях-c-чего-не-написано-в-старых-учебниках-но-может-вам-пригодиться">Что есть крутого в новых версиях C++ чего не написано в старых учебниках, но может вам пригодиться</h2>
+<p>Что такое C++ Standard, как это работает в реальном мире<br>
+C++11 and 14 features:</p>
+<ol>
+<li>Initializer lists</li>
+<li>Lambda functions</li>
+<li>Attributes</li>
+<li>Auto &amp; decltype</li>
+<li>itoa, stoi</li>
+</ol>
+<h2 id="то-что-почти-никто-не-использует-в-реальности-но-может-пригодиться-в-олипиаде">То что почти никто не использует в реальности но может пригодиться в олипиаде</h2>
+<ol>
+<li>macros</li>
+</ol>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote>
+</div>
+</body>
+
+</html>
